@@ -10,6 +10,8 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+app.locals.title = 'Nodepop';
+
 // middlewares
 app.use(logger('dev'));
 app.use(express.json());

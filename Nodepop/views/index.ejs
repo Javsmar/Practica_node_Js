@@ -7,7 +7,9 @@
   <body>
     <h1><%= title %></h1>
     <h2>Lista de artículos</h2>
+    <br>
     <% anuncios.forEach(anuncio => { %>
+      <br>
       <p><%= anuncio.nombre %>
         precio <%= anuncio.precio %>
         <img src="/images/<%= anuncio.foto %>" alt="<%= anuncio.nombre %>">

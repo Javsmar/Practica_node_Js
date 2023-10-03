@@ -9,6 +9,8 @@ a {
 
 img{
   width: 200px;
+  padding: 15px;
+  display: flex;
 }
 
 h1, h2{

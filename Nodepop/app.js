@@ -6,12 +6,6 @@ var logger = require('morgan');
 
 require('./lib/connectMongoose');
 
-const Anuncio = require('./models/Anuncios');
-const { Result } = require('express-validator');
-Anuncio.find().then((Result) => {
-  console.log(Result)
-}).catch(err => console.log(err))
-
 var app = express();
 
 // view engine setup
@@ -27,6 +21,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//Rutas del api
+app.use('/api/anuncio', require('./routes/api/anuncio'));
+
+// Rutas webside
 app.use('/',      require('./routes/index'));
 app.use('/users', require('./routes/users'));
 
@@ -38,11 +36,19 @@ app.use(function(req, res, next) {
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
+
+  res.status(err.status || 500);
+
+  // Si ha falla es un petición al api respondes con un error en formato json
+  if(req.originalUrl.startsWith('/api/')){
+    res.json({error: err.message});
+    return;
+  }
+
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
-  res.status(err.status || 500);
   res.render('error');
 });
 

@@ -10,9 +10,11 @@ const anuncioSchema = mongoose.Schema({
 });
 
 // Metodo statico 
-anuncioSchema.statics.lista = function(filtro, skip, limit){
+anuncioSchema.statics.lista = function(filtro, skip, limit, sort){
     const query = Anuncio.find(filtro); // devuelve un objeto de tipo query que es un thenable
     query.skip(skip);
+    query.limit(limit);
+    query.sort(sort);
     return query.exec();
 }
 

@@ -15,6 +15,8 @@ router.get('/', async (req, res, next) => {
         const skip = req.query.skip;
         const limit = req.query.limit;
 
+        // Ordenación (se ordena por orden asendente y -1 para desendente  )
+        const sort = req.query.sort;
 
         // Crea un objeto vacío para el filtro
         const filtro = {};
@@ -30,7 +32,7 @@ router.get('/', async (req, res, next) => {
         }
 
         // Usa el método 'lista' definido en el modelo 'Anuncios' para buscar anuncios con el filtro
-        const anuncios = await Anuncios.lista(filtro, skip, limit);
+        const anuncios = await Anuncios.lista(filtro, skip, limit, sort);
 
         // Devuelve la lista de anuncios encontrados como respuesta en formato JSON
         res.json({

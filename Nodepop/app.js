@@ -6,6 +6,12 @@ var logger = require('morgan');
 
 require('./lib/connectMongoose');
 
+const Anuncio = require('./models/Anuncios');
+const { Result } = require('express-validator');
+Anuncio.find().then((Result) => {
+  console.log(Result)
+}).catch(err => console.log(err))
+
 var app = express();
 
 // view engine setup

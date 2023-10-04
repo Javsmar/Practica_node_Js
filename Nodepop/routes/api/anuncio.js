@@ -6,14 +6,42 @@ const Anuncios = require('../../models/Anuncios'); // Importa el modelo de anunc
 // Devuelve una lista de todos los anuncios
 router.get('/', async (req, res, next) => {
     try {
-        const anuncios = await Anuncios.find(); // Busca todos los anuncios en la base de datos
+        // Obtén el valor del parámetro de consulta 'nombre' de la solicitud
+        const filterByNombre = req.query.nombre;
+        // Obtén el valor del parámetro de consulta 'precio' de la solicitud
+        const filterByPrecio = req.query.precio;
+
+        // Paginación
+        const skip = req.query.skip;
+        const limit = req.query.limit;
+
+
+        // Crea un objeto vacío para el filtro
+        const filtro = {};
+
+        // Verifica si 'nombre' está presente en la consulta
+        if (filterByNombre) {
+            // Si 'nombre' está presente, establece el campo 'nombre' en el filtro
+            filtro.nombre = { $regex: `^${filterByNombre}`, $options: 'i' };;
+        }
+
+        if(filterByPrecio) {
+            filtro.precio = filterByPrecio;
+        }
+
+        // Usa el método 'lista' definido en el modelo 'Anuncios' para buscar anuncios con el filtro
+        const anuncios = await Anuncios.lista(filtro, skip, limit);
+
+        // Devuelve la lista de anuncios encontrados como respuesta en formato JSON
         res.json({
-            results: anuncios // Devuelve los anuncios como respuesta en formato JSON
+            results: anuncios
         });
     } catch (err) {
-        next(err); // Si ocurre un error, pasa el control al siguiente middleware de manejo de errores
+        // Si ocurre un error, pasa el control al siguiente middleware de manejo de errores
+        next(err);
     }
 });
+
 
 // Ruta para manejar la solicitud: GET /api/anuncio/(id)
 // Devuelve un anuncio específico por su ID

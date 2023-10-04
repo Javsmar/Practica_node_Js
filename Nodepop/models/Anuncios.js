@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 
 //Definimos el schema de los anuncios
 const anuncioSchema = mongoose.Schema({
-    name: String,
-    sale: Boolean,
-    price: Number,
-    photo: String,
+    nombre: String,
+    venta: Boolean,
+    precio: Number,
+    foto: String,
     tags: [String]
 });
 

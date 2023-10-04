@@ -67,9 +67,24 @@ router.post('/', async (req, res, next) => {
 
     } catch (err) {
         next(err);
+    };
+});
+
+// Ruta para borrar un anuncios: DELETE /api/anuncio/(id)
+// ELImina un anuncio
+
+router.delete('/:id', async (req, res, next) => {
+    try {
+        
+        const id = req.params.id;
+        await Anuncios.deleteOne({_id: id});
+
+        res.json();
+
+    } catch (error) {
+        next(err);
     }
 })
-
 
 
 

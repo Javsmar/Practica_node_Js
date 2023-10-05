@@ -9,3 +9,5 @@ mongoose.connection.once('open', () => {
 })
 
 mongoose.connect('mongodb://127.0.0.1/dbnodepop')
+
+module.exports = mongoose.connection;

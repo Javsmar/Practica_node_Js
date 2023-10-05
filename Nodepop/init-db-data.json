@@ -1,0 +1,25 @@
+{
+    "anuncios": [
+        {
+            "nombre": "Portátil",
+            "venta": true,
+            "precio": 599.99,
+            "foto": "ordenador.jpg",
+            "tags": ["work", "lifestyle", "mobile"]
+        },
+        {
+            "nombre": "Bicicleta de Montaña",
+            "venta": true,
+            "precio": 249.99,
+            "foto": "bicicleta-de-montana.jpg",
+            "tags": ["lifestyle", "motor"]  
+        },
+        {
+            "nombre": "iPhone 12 Pro",
+            "venta": true,
+            "precio": 999.99,
+            "foto": "apple_iphone-12.jpg",
+            "tags": ["mobile"]
+        }
+    ]
+}

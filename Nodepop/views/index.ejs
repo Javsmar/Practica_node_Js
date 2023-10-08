@@ -1,88 +1,51 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title><%= title %></title>
-    <script src="https://unpkg.com/axios@1.5.0/dist/axios.min.js"></script>
     <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body onload="obtenerTodos()">
-    <div class="titulo">
-        <h1>Nodepop</h1>
-    </div>
-    <hr class="linea"/>
-    <br>
-    <br>
-    <br>
+</head>
+<body>
+<div class="titulo">
+    <h1>Nodepop</h1>
+</div>
+<hr class="linea"/>
+<br>
+<br>
+<br>
 
-    <div>
-        <h2>Lista de Anuncios</h2>
-        <table>
-            <thead>
+<div>
+    <h2>Lista de Anuncios</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Venta</th>
+                <th>Precio</th>
+                <th>Foto</th>
+                <th>Tags</th>
+            </tr>
+        </thead>
+        <tbody id="tblContenido">
+            <% anuncios.forEach(anuncio => { %>
                 <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Venta</th>
-                    <th>Precio</th>
-                    <th>Foto</th>
-                    <th>Tags</th>
+                    <td><%= anuncio._id %></td>
+                    <td><%= anuncio.nombre %></td>
+                    <td><%= anuncio.venta %></td>
+                    <td><%= anuncio.precio %></td>
+                    <td class="imagen"><img src="/images/<%= anuncio.foto %>" alt="<%= anuncio.nombre %>"></td>
+                    <td><%= anuncio.tags.join(', ') %></td>
                 </tr>
-            </thead>
-            <tbody id="tblContenido">
-                <% anuncios.forEach(anuncio => { %>
-                    <tr>
-                        <td><%= anuncio._id %></td>
-                        <td><%= anuncio.nombre %></td>
-                        <td><%= anuncio.venta %></td>
-                        <td><%= anuncio.precio %></td>
-                        <td><img src="/images/<%= anuncio.foto %>" alt="<%= anuncio.nombre %>"></td>
-                        <td><%= anuncio.tags.join(', ') %></td>
-                    </tr>
-                <% }) %>
-            </tbody>
-        </table>
-    </div>
-    <div>
-      <div>
-          <h4>Consultar Anuncio por ID</h4>
-          <input type="number" id="txtConsulta" placeholder="Ingrese el ID">
-          <button onclick="consultarUno()">Consultar</button><br/><br/>
-      </div>
-      <div>
-          <label for="consultarNombre">Nombre:</label>
-          <textarea id="consultarNombre" rows="1" cols="30"></textarea>
-      </div>
-      <div>
-          <label for="consultarVenta">Venta:</label>
-          <textarea id="consultarVenta" rows="1" cols="30"></textarea>
-      </div>
-      <div>
-          <label for="consultarPrecio">Precio:</label>
-          <textarea id="consultarPrecio" rows="1" cols="30"></textarea>
-      </div>
-      <div>
-          <label for="consultarFoto">Foto:</label>
-          <textarea id="consultarFoto" rows="1" cols="30"></textarea>
-      </div>
-      <div>
-          <label for="consultarTags">Tags:</label>
-          <textarea id="consultarTags" rows="1" cols="30"></textarea>
-      </div><br/>
-      <button onclick="modificarUno()">Modificar</button>
-      <button onclick="eliminarUno()">Eliminar</button>
-  </div>
+            <% }) %>
+            
+        </tbody>
+    </table>
+</div>
 
-  <div>
-      <div>
-          <h4>Agregar Anuncio</h4>
-          <input type="text" id="inputNombre" placeholder="Nombre">
-          <input type="text" id="inputVenta" placeholder="Venta (true/false)">
-          <input type="number" id="inputPrecio" placeholder="Precio">
-          <input type="text" id="inputFoto" placeholder="Foto">
-          <input type="text" id="inputTags" placeholder="Tags (separados por comas)">
-          <button onclick="agregarUno()">Agregar Nuevo Anuncio</button>
-      </div>
-  </div>
-
-    <!-- Resto de tu código y scripts JavaScript -->
 </body>
 </html>
+
+
+
+
+

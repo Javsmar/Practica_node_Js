@@ -26,6 +26,7 @@ h1{
   border-color: black;
 }
 
+
 h2{
   text-align: center;
 }
@@ -48,6 +49,10 @@ th, td{
   text-align: left;
 }
 
+
+.imagen{
+  width: 20%;
+}
 th{
   background-color: darkolivegreen;
   font-weight: bold;
@@ -57,6 +62,13 @@ th{
 
 td{
   background-color: #FFFFE0;
+}
+
+img{
+  width: 30%;
+  position: relative;
+  left: 70px;
+  
 }
 
 input{

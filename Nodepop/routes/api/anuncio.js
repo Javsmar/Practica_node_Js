@@ -2,8 +2,19 @@ const express = require('express');
 const router = express.Router();
 const Anuncios = require('../../models/Anuncios'); // Importa el modelo de anuncios
 
+
+
 // Ruta para manejar la solicitud: GET /api/anuncio
 // Devuelve una lista de todos los anuncios
+/**
+ * @openapi
+ * /api/anuncio:
+ *  get:
+ *   description: Devuelve una lista de todos los anuncios
+ *   responses:
+ *    200:
+ *     descriptions: devuelve json
+ */
 router.get('/', async (req, res, next) => {
     try {
         // Obtén el valor del parámetro de consulta 'nombre' de la solicitud
@@ -50,6 +61,17 @@ router.get('/', async (req, res, next) => {
 
 // Ruta para manejar la solicitud: GET /api/anuncio/(id)
 // Devuelve un anuncio específico por su ID
+
+/**
+ * @openapi
+ * /api/anuncio/id:
+ *  get:
+ *   description: Devuelve una lista de todos los anuncios por id
+ *   responses:
+ *    200:
+ *     descriptions: devuelve json
+ */
+
 router.get('/:id', async (req, res, next) => {
     try {
         const id = req.params.id; // Obtiene el ID del anuncio de los parámetros de la URL
@@ -64,6 +86,17 @@ router.get('/:id', async (req, res, next) => {
 
 // Ruta para actulizar los anuncios: PUT /api/anuncio/(_id)
 // Actualiza un anuncio
+
+/**
+ * @openapi
+ * /api/anuncio/id
+ *  put:
+ *   description: Actualiza  los anuncios
+ *   responses:
+ *    200:
+ *     descriptions: devuelve json
+ */
+
 router.put('/:id', async (req, res, next) => {
     try {
         // Obtener el ID del anuncio a actualizar desde los parámetros de la URL
@@ -84,8 +117,19 @@ router.put('/:id', async (req, res, next) => {
     }
 });
 
-// Ruta para crear un anuncios: PUT /api/anuncio
+// Ruta para crear un anuncios: Post /api/anuncio
 // Devuelve un anuncio nuevo
+
+/**
+ * @openapi
+ * /api/anuncio/id
+ *  post:
+ *   description: crea un nuevo anuncios
+ *   responses:
+ *    200:
+ *     descriptions: devuelve json
+ */
+
 router.post('/', async (req, res, next) => {
     try {
         const anuncioData = req.body;
@@ -117,8 +161,8 @@ router.delete('/:id', async (req, res, next) => {
     } catch (error) {
         next(err);
     }
-})
+});
 
 
 
-module.exports = router; // Exporta el enrutador para su uso en la aplicación Express
+module.exports = router; 

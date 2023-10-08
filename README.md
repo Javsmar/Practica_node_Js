@@ -12,6 +12,18 @@ npm i cross-env: se utiliza para instalar el paquete cross-env como una dependen
 
 El comando `cross-env DEBUG=myapp:* nodemon ./bin/www` combina el uso de dos paquetes, `cross-env` y `nodemon`, para iniciar una aplicación Node.js con un entorno de depuración activado.
 ```
+## review database
+```
+on  /lib/connectMongoose.js
+
+```
+
+## Load initial data
+```
+Este comondo boora toda la base de datos y crea datos por default
+npm run init-db
+```
+
 ## En produccion
 ```
 npm start 
@@ -30,14 +42,14 @@ npm run dev
 json
 {
     "_id": "651c258308673af420c805b5",
-    "nombre": "Portátil HP",
-    "venta": true,
-    "precio": 599.99,
-    "foto": "ordenador-portatil-hp-15s-fq2161ns.jpg",
+    "nombre": "xxxxxxxxxx",
+    "venta": xxxx,
+    "precio": xxxxxx,
+    "foto": "xxxxxxxxxxxxxxxxxxxxxxxxxxxx",
     "tags": [
-    "work",
-    "lifestyle",
-    "mobile"
+    "xxxxxx",
+    "xxxxxx",
+    "xxxxxx"
 ]
 }
 ```
